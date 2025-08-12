@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import Button from './Button';
 import Counter from './Counter';
 import GenderSelection from './GenderSelection';
 import HeightSlider from './HeightSlider';
 
-import { COLORS, SIZES } from '@/constants/theme';
+import { SIZES } from '@/constants/theme';
 
 type GenderType = 'male' | 'female';
 
@@ -49,11 +50,7 @@ export default function Calculator() {
                     handleAmountDecrement={() => { if (age >= 1) { setAge(prev => prev - 1) } }}
                 />
             </View>
-            <Pressable
-                style={styles.btnCalculate}
-                onPress={CalculateBMI}>
-                <Text style={styles.btnCalculateText}>Calculate</Text>
-            </Pressable>
+            <Button title='Calculate' handleOnPress={CalculateBMI} />
         </SafeAreaView>
     )
 }
@@ -65,16 +62,5 @@ const styles = StyleSheet.create({
     counterContainer: {
         flexDirection: 'row',
         gap: SIZES.xSmall,
-    },
-    btnCalculate: {
-        backgroundColor: COLORS.btnPrimary,
-        borderRadius: SIZES.small / 2,
-        paddingVertical: SIZES.medium
-    },
-    btnCalculateText: {
-        color: COLORS.defaultText,
-        fontSize: SIZES.large,
-        fontWeight: 500,
-        textAlign: 'center'
     }
 })
