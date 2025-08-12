@@ -1,12 +1,14 @@
 import Slider from '@react-native-community/slider';
-import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, SIZES } from '@/constants/theme';
 
-export default function HeightSlider() {
-    const [height, setHeight] = useState(150);
+interface HeightProps {
+    height: number,
+    handleHeightSlider: (height: number) => void;
+}
 
+export default function HeightSlider({ height, handleHeightSlider }: HeightProps) {
     return (
         <View style={styles.container}>
             <View style={styles.sliderContainer}>
@@ -23,7 +25,7 @@ export default function HeightSlider() {
                     maximumTrackTintColor={'#a7a7a7'}
                     thumbTintColor={COLORS.btnPrimary}
                     value={height}
-                    onValueChange={(prev) => setHeight(prev)}
+                    onValueChange={handleHeightSlider}
                 />
             </View>
         </View>

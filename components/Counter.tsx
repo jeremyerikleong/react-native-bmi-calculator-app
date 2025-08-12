@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { COLORS, SIZES } from '@/constants/theme';
 
-export default function Counter({ title }: { title: string }) {
-    const [amount, setAmount] = useState(0);
+interface CounterProps {
+    title: string;
+    amount: number;
+    handleAmountIncrement: () => void;
+    handleAmountDecrement: () => void;
+}
 
-    function handleAmountIncrement() {
-        setAmount(prev => prev + 1);
-    }
-
-    function handleAmountDecrement() {
-        if (amount >= 1) {
-            setAmount(prev => prev - 1);
-        }
-    }
-
+export default function Counter({ title, amount, handleAmountIncrement, handleAmountDecrement }: CounterProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>

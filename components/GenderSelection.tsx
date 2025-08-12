@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { COLORS, SIZES } from '@/constants/theme';
 
-export default function GenderSelection() {
-    const [gender, setGender] = useState('null');
+type GenderType = 'male' | 'female';
+interface Gender {
+    gender: GenderType,
+    handleGenderSelection: (selectedGender: GenderType) => void;
+}
 
-    function handleGenderSelection(genderSelection: string): void {
-        setGender(genderSelection);
-    }
-
+export default function GenderSelection({ gender, handleGenderSelection }: Gender) {
     return (
         <View style={styles.container}>
             <TouchableOpacity
