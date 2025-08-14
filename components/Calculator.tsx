@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Button from './Button';
 import Counter from './Counter';
 import GenderSelection from './GenderSelection';
 import HeightSlider from './HeightSlider';
 
-import { SIZES } from '@/constants/theme';
+import { COLORS, SIZES } from '@/constants/theme';
 
 type GenderType = 'male' | 'female';
 
-export default function Calculator() {
+export default function Calculator({ navigation }: { navigation: any }) {
     const [gender, setGender] = useState<GenderType>('male');
     const [height, setHeight] = useState(150);
     const [weight, setWeight] = useState(50);
@@ -29,11 +29,16 @@ export default function Calculator() {
         if (gender && height && weight && age) {
             const formula = weight / ((height / 100) ** 2);
             setBMI(+formula.toFixed(1));
+
+            const bmi = {
+                bmi: +formula.toFixed(1)
+            }
+            navigation.navigate('Result', bmi);
         }
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <GenderSelection gender={gender} handleGenderSelection={handleGenderSelection} />
             <HeightSlider height={height} handleHeightSlider={handleHeightSlider} />
             <View style={styles.counterContainer}>
@@ -51,13 +56,17 @@ export default function Calculator() {
                 />
             </View>
             <Button title='Calculate' handleOnPress={CalculateBMI} />
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        gap: SIZES.medium
+        flex: 1,
+        gap: SIZES.medium,
+        padding: SIZES.large,
+        justifyContent: 'center',
+        backgroundColor: COLORS.background
     },
     counterContainer: {
         flexDirection: 'row',

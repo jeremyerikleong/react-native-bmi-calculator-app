@@ -1,33 +1,38 @@
 import { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Button from './Button';
 
 import { COLORS, SIZES } from '@/constants/theme';
 
-export default function Result() {
-    const result = 20.7;
+type ResultProps = {
+    navigation: any;
+    route: any;
+};
+
+export default function Result({ navigation, route }: ResultProps) {
+    const { bmi } = route.params;
     const [resultColor, setResultColor] = useState('');
     const [healthStatus, setHealthStatus] = useState('');
     const [message, setMessage] = useState('');
 
     useEffect(() => {
         switch (true) {
-            case result < 18.5:
+            case bmi < 18.5:
                 setHealthStatus("Underweight");
                 setResultColor("#5dc8f2");
                 setMessage("You are underweight.");
                 break;
-            case result >= 18.5 && result < 25:
+            case bmi >= 18.5 && bmi < 25:
                 setHealthStatus("Healthy weight");
                 setResultColor("#9BB33B");
                 setMessage("You are at a healthy weight.");
                 break;
-            case result >= 25 && result <= 29.9:
+            case bmi >= 25 && bmi <= 29.9:
                 setHealthStatus("Overweight");
                 setResultColor("#fbc80d");
                 setMessage("You are overweight.");
                 break;
-            case result > 30 && result < 35:
+            case bmi > 30 && bmi < 35:
                 setHealthStatus("Obese");
                 setResultColor("#f18930");
                 setMessage("You are obese.");
@@ -42,12 +47,12 @@ export default function Result() {
     }, [])
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <View style={styles.innerContainer}>
                 <Text style={[styles.status, { color: resultColor }]}>{healthStatus}</Text>
 
                 <View>
-                    <Text style={styles.result}>{result}</Text>
+                    <Text style={styles.result}>{bmi}</Text>
                 </View>
 
                 <View style={{ alignItems: 'center' }}>
@@ -73,19 +78,22 @@ export default function Result() {
                     </Text>
                 </View>
             </View>
-            <Button title={'Measure Again'} handleOnPress={() => console.warn('test')} />
-        </SafeAreaView>
+            <Button title={'Measure Again'} handleOnPress={() => navigation.goBack()} />
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         padding: SIZES.large,
-        gap: SIZES.medium
+        gap: SIZES.medium,
+        justifyContent: 'center',
+        backgroundColor: COLORS.background
     },
     innerContainer: {
         backgroundColor: COLORS.foreground,
-        height: '80%',
+        height: '75%',
         width: '100%',
         borderRadius: SIZES.xSmall,
         justifyContent: 'center',

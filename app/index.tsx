@@ -1,26 +1,21 @@
 import Calculator from '@/components/Calculator';
-import { Stack } from 'expo-router';
-import { StyleSheet, View } from "react-native";
+import Result from '@/components/Result';
+import { NavigationIndependentTree } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { COLORS, SIZES } from '@/constants/theme';
+const Stack = createNativeStackNavigator();
 
 export default function Index() {
   return (
-    <>
-      <Stack.Screen options={{ title: 'BMI Calculator' }} />
-      <View style={styles.container}>
-        <Calculator />
-      </View>
-    </>
+    <NavigationIndependentTree>
+      <Stack.Navigator initialRouteName="Calculator">
+        <Stack.Screen name="Calculator"
+          component={Calculator}
+        />
+        <Stack.Screen name="Result"
+          component={Result}
+        />
+      </Stack.Navigator>
+    </NavigationIndependentTree>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingVertical: SIZES.large,
-    paddingHorizontal: SIZES.medium,
-    backgroundColor: COLORS.background
-  }
-})
