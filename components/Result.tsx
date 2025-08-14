@@ -86,10 +86,8 @@ export default function Result({ navigation, route }: ResultProps) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: SIZES.large,
         gap: SIZES.medium,
         justifyContent: 'center',
-        backgroundColor: COLORS.background
     },
     innerContainer: {
         backgroundColor: COLORS.foreground,

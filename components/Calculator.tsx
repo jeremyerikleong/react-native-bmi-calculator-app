@@ -5,7 +5,7 @@ import Counter from './Counter';
 import GenderSelection from './GenderSelection';
 import HeightSlider from './HeightSlider';
 
-import { COLORS, SIZES } from '@/constants/theme';
+import { SIZES } from '@/constants/theme';
 
 type GenderType = 'male' | 'female';
 
@@ -64,9 +64,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         gap: SIZES.medium,
-        padding: SIZES.large,
-        justifyContent: 'center',
-        backgroundColor: COLORS.background
+        justifyContent: 'center'
     },
     counterContainer: {
         flexDirection: 'row',
