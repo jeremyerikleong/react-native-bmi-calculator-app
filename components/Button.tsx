@@ -20,7 +20,7 @@ export default function Button({ title, handleOnPress }: buttonProps) {
 
 const styles = StyleSheet.create({
     btn: {
-
+        width: '100%',
         backgroundColor: COLORS.btnPrimary,
         borderRadius: SIZES.small / 2,
         paddingVertical: SIZES.medium,
