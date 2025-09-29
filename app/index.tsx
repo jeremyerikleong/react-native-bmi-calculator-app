@@ -1,4 +1,5 @@
 import Calculator from '@/components/Calculator';
+import Onboarding from '@/components/OnboardingScreen';
 import Result from '@/components/Result';
 import StartScreen from '@/components/StartScreen';
 import { NavigationIndependentTree } from '@react-navigation/native';
@@ -11,7 +12,7 @@ const Stack = createNativeStackNavigator();
 export default function Index() {
   return (
     <NavigationIndependentTree>
-      <Stack.Navigator initialRouteName="StartScreen"
+      <Stack.Navigator initialRouteName="OnboardingScreen"
         screenOptions={{
           headerStyle: {
             backgroundColor: COLORS.background
@@ -22,6 +23,10 @@ export default function Index() {
             padding: SIZES.large,
           }
         }}>
+        <Stack.Screen name="OnboardingScreen"
+          component={Onboarding}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="StartScreen"
           component={StartScreen}
           options={{ headerShown: false, animation: "fade" }}
