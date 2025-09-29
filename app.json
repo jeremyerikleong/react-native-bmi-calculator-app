@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/splash-icon.png",
         "backgroundColor": "#17202A"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.jeremyerikleong.reactnativebmicalculatorapp"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "907a6d01-2f84-4c96-a633-b00f93c4926e"
+      }
+    },
+    "owner": "jeremyerikleong"
   }
 }
