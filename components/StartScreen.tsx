@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Button from './Button';
 
 import { COLORS, SIZES } from '@/constants/theme';
@@ -8,6 +8,7 @@ export default function StartScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
+                <Image source={require('../assets/images/start-screen.png')} style={styles.image} />
                 <Text style={styles.title}>Calculate Your BMI</Text>
             </View>
 
@@ -37,6 +38,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: COLORS.defaultText,
         marginBottom: SIZES.large
+    },
+    image: {
+        width: 200,
+        height: 200,
     },
     buttonContainer: {
         width: '100%',

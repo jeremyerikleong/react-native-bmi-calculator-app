@@ -13,7 +13,7 @@ const slides = [
     {
         key: "2",
         title: "What is BMI?",
-        text: "BMI uses your height and weight to estimate body fat and health range.",
+        text: "BMI (Body Mass Index) uses your height and weight to estimate body fat and health range.",
         image: require("@/assets/images/onboarding-2.png"),
     },
     {
